@@ -33,8 +33,9 @@ export class AddEmployeePage {
 
   addEmployee(employee: Employee) {
     this.emp.addEmployee(employee).then( ref => {
+      console.log(ref)
       this.toast.show(`${employee.name} added!`);
-      this.navCtrl.setRoot('HomePage', { key: ref.key })
+      this.navCtrl.setRoot('HomePage', { key: ref.id })
     });
   }
 

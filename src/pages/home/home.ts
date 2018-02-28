@@ -3,7 +3,8 @@ import { NavController, IonicPage } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 
 import { EmployeeListService } from '../../services/employee-list/employee-list.service';
-import { Employee } from '../../models/employee/employee.model';
+// import { Employee } from '../../models/employee/employee.model';
+// dev comment
 
 @IonicPage()
 @Component({
@@ -12,7 +13,8 @@ import { Employee } from '../../models/employee/employee.model';
 })
 export class HomePage {
 
-  employeeList$: Observable<Employee[]>;
+  employeeList$: Observable<any[]>;
+  // should be of type Employee
 
   constructor(public navCtrl: NavController, private emp: EmployeeListService) {
     this.employeeList$ = this.emp
@@ -22,9 +24,8 @@ export class HomePage {
       .map(
         changes => {
           return changes.map(c => ({
-            key: c.payload.key, ...c.payload.val()
+            key: c.payload.doc.id, ...c.payload.doc.data()
           }));
         }); 
   }
-
 }

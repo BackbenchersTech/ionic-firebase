@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestoreModule } from 'angularfire2/firestore'
 
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './firebase.credentials';
@@ -19,6 +20,7 @@ import { ToastService } from '../services/toast/toast.service';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFirestoreModule.enablePersistence(),
     AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
